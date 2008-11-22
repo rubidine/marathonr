@@ -1,0 +1,23 @@
+# Test configurator
+Configuration:
+  Given Command Line Arugments:
+    - should report those arguments as non-defaults
+    - should report those arguments as non-defaults (even when same as defaults)
+    - should change configuration for each given option
+  Given a Config File:
+    - should load arguments and report them as non-defaults
+  Given a Config File and Command Line Arguments:
+    - config file should not overwrite command-line options
+    - should supress loading of config file with command line arguments
+    - should be able to load config file from a nonstandard location by arugment
+# Test some real data
+Integration:
+  Given a normal worker:
+    - should launch the worker
+    - should collect worker pid
+    - worker should complete
+  Given many workers:
+    - should not launch more than configured
+  Given a haning worker:
+    - should kill the worker after configured time
+    - should mark the work request as errored

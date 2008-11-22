@@ -1,0 +1,14 @@
+MarathonR
+=========
+
+Jobs requests are stored and retreived by Marathonr::JobRequest.  You can
+run the migrations using the `marathonr_migrate` script that was installed
+with this gem.
+
+Start the server with `marathonr`.
+
+Put all the workers in a directory 'workers' under the current directory.
+
+marathonr --help
+
+Rails integration via marathonr_plugin
