@@ -104,7 +104,11 @@ module Marathonr
 
         opts.on('-m', '--max-execution-time TIME', 'Workers can only run for TIME seconds befroe being killed') do |m|
           @configuration[:worker_timeout] = m.to_i
-         end
+        end
+
+        opts.on('-d', '--debug', 'Show debugging messages') do |d|
+          $DEBUG = true
+        end
       end.parse(ARGV)
     end
 

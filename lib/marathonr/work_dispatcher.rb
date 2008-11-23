@@ -60,6 +60,8 @@ module Marathonr
         puts "Reset Connection" if $DEBUG
         Marathonr::WorkRequest.connection.reconnect!
       end
+
+      puts "CONNECTED" if $DEBUG
     end
 
     def fork_and_record req
@@ -76,9 +78,8 @@ module Marathonr
     end
 
     def perform_fork req
-      Marathonr::WorkRequest.remove_connection
       pid = fork do
-              Marathonr::WorkRequest.establish_connection @config
+              ensure_connected
               begin
                 load worker_file_name(req)
                 req.worker_name.camelize.constantize.new(req, @config)
